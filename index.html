@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>传统医药上市公司 · 信息化产品架构</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="is-locked">
+  <div class="access-gate" id="accessGate" role="dialog" aria-labelledby="accessTitle" aria-modal="true">
+    <div class="access-gate-card">
+      <h2 id="accessTitle">信息化产品架构</h2>
+      <p>请输入访问密码以查看内容</p>
+      <form id="accessForm" autocomplete="off">
+        <label for="accessPassword">访问密码</label>
+        <input id="accessPassword" name="password" type="password" inputmode="numeric" autocomplete="off" required autofocus>
+        <p class="access-error" id="accessError" role="alert"></p>
+        <button type="submit">进入</button>
+      </form>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">信息化 <span>产品架构</span></div>
+      <nav aria-label="页面导航">
+        <ul>
+          <li><a href="#overview">总览</a></li>
+          <li><a href="#differentiators">行业约束</a></li>
+          <li><a href="#stack">分层模型</a></li>
+          <li><a href="#integration">架构图</a></li>
+          <li><a href="#flows">业务流转</a></li>
+          <li><a href="#bip">BIP</a></li>
+          <li><a href="#layers">产品能力</a></li>
+          <li><a href="#roadmap">实施节奏</a></li>
+          <li><a href="#notes">选型要点</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>传统医药上市公司信息化产品架构</h1>
+      <p class="lead">
+        架构不采用通用企业「OA + HR + CRM」的简单叠加，而是围绕
+        <strong>GMP/GSP 合规底线</strong>、<strong>中药材原料波动</strong>、
+        <strong>学术推广合规</strong>与<strong>全链路质量追溯</strong>，
+        按「基础协同 — 业务运营 — 行业特色 — 智能决策」四层构建能力体系。
+      </p>
+      <div class="pill-row">
+        <span class="pill">合规可审计</span>
+        <span class="pill">批次全追溯</span>
+        <span class="pill">销售证据链</span>
+        <span class="pill">质量数据闭环</span>
+        <span class="pill">BIP 业财一体</span>
+        <span class="pill">分阶段投入</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="overview">
+      <h2>架构总览</h2>
+      <p class="section-desc">
+        自下而上：合规与协同底座支撑业务商业化与供应链；生产质量系统构成行业核心壁垒；
+        经营分析与企业 AI 知识库承接数据资产与决策需求。
+      </p>
+      <div class="stack" role="img" aria-label="四层架构自下而上">
+        <div class="stack-layer layer-4">
+          <h3>第四层 · 数据与智能决策</h3>
+          <p>经营分析 / BI、合规风险仪表盘、企业 AI 知识库（受控文档/RAG、合规问答）— 披露与决策支撑</p>
+          <div class="systems">
+            <span class="tag">BI</span>
+            <span class="tag">质量成本看板</span>
+            <span class="tag">企业AI知识库</span>
+          </div>
+        </div>
+        <div class="stack-layer layer-3">
+          <h3>第三层 · 行业特色生产与质量</h3>
+          <p>MES（中药提取/制剂）、LIMS — 电子批记录、检验闭环、电子签名，企业核心竞争力所在</p>
+          <div class="systems">
+            <span class="tag">MES</span>
+            <span class="tag">EBR</span>
+            <span class="tag">LIMS</span>
+          </div>
+        </div>
+        <div class="stack-layer layer-2">
+          <h3>第二层 · 业务运营与商业化</h3>
+          <p>医药 CRM（学术推广合规）、WMS/SCM — 流向可视化、温湿度、批次效期强管控</p>
+          <div class="systems">
+            <span class="tag">医药 CRM</span>
+            <span class="tag">WMS</span>
+            <span class="tag">SCM</span>
+          </div>
+        </div>
+        <div class="stack-connector" aria-hidden="true">◆ 财经中枢横贯各层 ◆</div>
+        <div class="stack-layer layer-finance">
+          <h3>财经中枢 · 用友 BIP（业财一体）</h3>
+          <p>总账 / 合并报表、全面预算与费控、应收应付、批次成本、税务与电子发票 — 承接上市披露与业务过账</p>
+          <div class="systems">
+            <span class="tag">BIP 财务</span>
+            <span class="tag">费控</span>
+            <span class="tag">成本</span>
+            <span class="tag">资金</span>
+          </div>
+        </div>
+        <div class="stack-layer layer-1">
+          <h3>第一层 · 基础协同与管控（必建）</h3>
+          <p>OA（GMP/GSP 流程版）、HR — 合规流程留痕、受控文档、资质培训可追溯；与 BIP 主数据、预算科目贯通</p>
+          <div class="systems">
+            <span class="tag">OA</span>
+            <span class="tag">HR</span>
+            <span class="tag">知识库</span>
+          </div>
+        </div>
+      </div>
+      <p class="print-hint">可使用浏览器打印为 PDF，用于离线查阅。</p>
+    </section>
+
+    <section id="differentiators">
+      <h2>医药行业关键差异化约束</h2>
+      <p class="section-desc">各系统设计与选型均需对照以下约束，避免通用套件「能用但不合规」。</p>
+      <div class="diff-grid">
+        <article class="diff-card">
+          <h4>GMP / GSP 合规</h4>
+          <p>偏差、变更、CAPA、供应商审计等流程须留痕可追溯；飞检可一键导出证据链。</p>
+        </article>
+        <article class="diff-card">
+          <h4>原料波动与排产</h4>
+          <p>中药材季节性与质量波动大，需与采购周期、罐容、换线时间联动的排产与库存策略。</p>
+        </article>
+        <article class="diff-card">
+          <h4>学术推广合规</h4>
+          <p>会议、讲者劳务、拜访记录与费用核销绑定，防范商业贿赂与违规承诺风险。</p>
+        </article>
+        <article class="diff-card">
+          <h4>全链路质量追溯</h4>
+          <p>从入库检验、QA 放行、生产领料到成品出库，批次状态单一来源、不可绕过。</p>
+        </article>
+        <article class="diff-card">
+          <h4>业财一体与披露</h4>
+          <p>BIP 承载预算费控、批次成本与合并报表；业务单据过账可追溯，支撑审计与定期报告。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="stack">
+      <h2>分层职责说明</h2>
+      <p class="section-desc">每层标注建设性质：第一层为合规底座必建；其余按销售模式与产能阶段按需选型。</p>
+      <div class="highlight-box">
+        <strong>设计原则：</strong>有限预算下不并行铺开全部系统；优先夯实 OA 合规流程、HR 资质培训与 <strong>BIP 总账/费控</strong>（上市披露与飞检双刚需），再推进 WMS → LIMS/MES → CRM/BI/企业 AI 知识库。
+      </div>
+    </section>
+
+    <section id="integration">
+      <h2>核心系统架构图</h2>
+      <p class="section-desc">
+        实线为数据/过账主路径，虚线箭头表示关键集成方向（动画示意流转）。<strong>BIP</strong> 居中承载业财一体与披露口径。
+      </p>
+      <div class="diagram-wrap">
+        <svg class="arch-canvas" viewBox="0 0 920 520" role="img" aria-label="系统集成架构图，中心为用友BIP">
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#38bdf8"/>
+            </marker>
+            <marker id="arrowFin" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#fbbf24"/>
+            </marker>
+            <linearGradient id="nodeBip" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#fcd34d"/>
+              <stop offset="100%" style="stop-color:#f59e0b"/>
+            </linearGradient>
+            <linearGradient id="nodeAi" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#a78bfa"/>
+              <stop offset="100%" style="stop-color:#8b5cf6"/>
+            </linearGradient>
+            <linearGradient id="nodeBase" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#60a5fa"/>
+              <stop offset="100%" style="stop-color:#3b82f6"/>
+            </linearGradient>
+            <linearGradient id="nodeOps" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#2dd4bf"/>
+              <stop offset="100%" style="stop-color:#14b8a6"/>
+            </linearGradient>
+            <linearGradient id="nodeQuality" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#f472b6"/>
+              <stop offset="100%" style="stop-color:#ec4899"/>
+            </linearGradient>
+          </defs>
+
+          <rect class="arch-node" x="280" y="8" width="360" height="56" rx="8" fill="url(#nodeAi)" opacity="0.95"/>
+          <text x="460" y="40" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">BI · 合规仪表盘 · 企业AI知识库</text>
+
+          <path class="arch-link" d="M460 64 L460 108" marker-end="url(#arrow)"/>
+          <rect class="arch-node" x="300" y="108" width="320" height="52" rx="8" fill="url(#nodeBase)"/>
+          <text x="460" y="138" text-anchor="middle" fill="#fff" font-size="13">OA · HR · 受控文档 · GMP 流程</text>
+
+          <path class="arch-link finance" d="M380 160 L280 220" marker-end="url(#arrowFin)"/>
+          <path class="arch-link finance" d="M540 160 L640 220" marker-end="url(#arrowFin)"/>
+
+          <rect class="arch-node" x="60" y="218" width="200" height="52" rx="8" fill="url(#nodeOps)"/>
+          <text x="160" y="248" text-anchor="middle" fill="#fff" font-size="12">医药 CRM</text>
+
+          <rect class="arch-node" x="660" y="218" width="200" height="52" rx="8" fill="url(#nodeOps)"/>
+          <text x="760" y="248" text-anchor="middle" fill="#fff" font-size="12">WMS · SCM</text>
+
+          <rect class="arch-node" x="310" y="200" width="300" height="72" rx="10" fill="url(#nodeBip)"/>
+          <text x="460" y="232" text-anchor="middle" fill="#78350f" font-size="15" font-weight="700">用友 BIP</text>
+          <text x="460" y="252" text-anchor="middle" fill="#92400e" font-size="10" opacity="0.95">总账 · 费控 · 成本 · 资金 · 合并</text>
+
+          <path class="arch-link finance" d="M460 272 L460 310" marker-end="url(#arrowFin)"/>
+          <path class="arch-link quality" d="M760 270 L640 310" marker-end="url(#arrow)"/>
+          <path class="arch-link quality" d="M160 270 L320 310" marker-end="url(#arrow)"/>
+
+          <rect class="arch-node" x="310" y="308" width="300" height="56" rx="8" fill="url(#nodeQuality)"/>
+          <text x="460" y="340" text-anchor="middle" fill="#fff" font-size="13">LIMS ◄──► MES（EBR · 批记录）</text>
+
+          <path class="arch-link" d="M460 364 L460 400" marker-end="url(#arrow)"/>
+          <text class="arch-label" x="480" y="386">批次成本 / 物料凭证</text>
+
+          <rect x="120" y="400" width="680" height="100" rx="8" fill="#e0f2fe" stroke="#bae6fd"/>
+          <text x="460" y="428" text-anchor="middle" fill="#2a4070" font-size="12" font-weight="600">集成要点</text>
+          <text x="460" y="452" text-anchor="middle" fill="#5c6f9a" font-size="10">
+            OA/CRM 费用 → BIP 预算占用与报销凭证 · WMS/LIMS/MES → BIP 存货与制造成本 · HR 组织人员 → BIP 主数据
+          </text>
+          <text x="460" y="472" text-anchor="middle" fill="#5c6f9a" font-size="10">
+            上市披露：BIP 合并报表 → BI 管理口径 · 质量成本从 OA/MES 归集至 BIP 辅助核算
+          </text>
+        </svg>
+      </div>
+      <div class="bip-hub">
+        <div class="bip-hub-side">
+          <strong>业务侧入账</strong>
+          <ul>
+            <li>采购入库、生产完工</li>
+            <li>销售开票与回款</li>
+            <li>学术会议 / 讲者费</li>
+          </ul>
+        </div>
+        <div class="bip-hub-core">BIP 财务中枢</div>
+        <div class="bip-hub-side">
+          <strong>管控侧输出</strong>
+          <ul>
+            <li>预算执行与费控红线</li>
+            <li>批次 / 品种毛利</li>
+            <li>合并报表与审计轨迹</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="flows">
+      <h2>关键业务流转示意</h2>
+      <p class="section-desc">滚动进入视区后步骤依次点亮，箭头上的动点示意单据/状态流转方向（打印时静态展示）。</p>
+
+      <div class="flow-section">
+        <h3>学术推广费控合规流（OA + CRM + BIP）</h3>
+        <p class="flow-caption">事前—事中—事后闭环，满足商业贿赂风险防范与审计抽样。</p>
+        <div class="flow-track" data-flow="fee">
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>活动申请</h4><p>OA 学术活动审批</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step fin"><div class="flow-step-inner"><h4>预算占用</h4><p>BIP 费控科目</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>会议执行</h4><p>CRM 讲者·签到证据</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>报销核销</h4><p>OA 三单匹配</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step fin"><div class="flow-step-inner"><h4>财务凭证</h4><p>BIP 应付·归档</p></div></div>
+        </div>
+      </div>
+
+      <div class="flow-section">
+        <h3>批次质量追溯流（WMS + LIMS + MES + BIP）</h3>
+        <p class="flow-caption">未经 QA 放行不得领料；偏差可回写 OA；完工成本进入 BIP。</p>
+        <div class="flow-track" data-flow="quality">
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>到货入库</h4><p>WMS 待检</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>检验</h4><p>LIMS 任务</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>QA 放行</h4><p>状态回写</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>生产 EBR</h4><p>MES 批记录</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step fin"><div class="flow-step-inner"><h4>成本结账</h4><p>BIP 批次成本</p></div></div>
+        </div>
+      </div>
+
+      <div class="flow-section">
+        <h3>GMP 偏差闭环流（MES/LIMS → OA → BIP）</h3>
+        <p class="flow-caption">质量事件与经济损失可关联，支撑质量成本看板。</p>
+        <div class="flow-track" data-flow="capa">
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>异常触发</h4><p>收率/环控超标</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>偏差登记</h4><p>OA 偏差/CAPA</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step sys"><div class="flow-step-inner"><h4>调查结案</h4><p>责任人·措施</p></div></div>
+          <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span class="pulse-dot"></span></div>
+          <div class="flow-step fin"><div class="flow-step-inner"><h4>质量成本</h4><p>BIP 辅助核算</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="layers">
+      <h2>产品能力规划</h2>
+      <p class="section-desc">共 9 类核心系统；<strong>BIP</strong> 横贯各层，其余按四层归属展开能力要点。</p>
+
+      <!-- Layer 1 -->
+      <article class="layer-block" id="layer-1">
+        <div class="layer-block-header">
+          <span class="layer-num" style="background: var(--layer1);">一</span>
+          <h3>基础协同与管控层</h3>
+          <span class="badge">必建 · 合规底座</span>
+        </div>
+        <div class="layer-block-body">
+          <div class="product">
+            <h4><span class="icon">①</span> OA / 协同办公平台（医药特色版）</h4>
+            <ul>
+              <li><strong>GMP/GSP 流程嵌入：</strong>偏差处理、变更控制、CAPA、供应商审计等在 OA 固化流转，步步留痕，应对飞检。</li>
+              <li><strong>合同与 BIP 费控联动：</strong>销售合同关联回款计划与预算科目；学术推广报销与活动申请、照片签到、讲者协议绑定，实现事前申请—事中控制—事后核销。</li>
+              <li><strong>知识文档管控：</strong>受控文档库保证 SOP、质量标准、注册文件最新版唯一、防篡改，旧版自动回收权限。</li>
+            </ul>
+          </div>
+          <div class="product">
+            <h4><span class="icon">②</span> 人力资源系统</h4>
+            <ul>
+              <li><strong>资质证照全生命周期：</strong>QA/QC、生产负责人、质量受权人等关键岗位学历、职称、培训证、健康证到期预警，飞检一键导出档案。</li>
+              <li><strong>培训与岗位绑定：</strong>培训未完成或考核不合格则限制进入生产/质量相关操作（可与 OA、门禁联动）。</li>
+              <li><strong>多产线排班：</strong>倒班、季节性加班等复杂规则，兼顾劳动法合规校验。</li>
+            </ul>
+          </div>
+          <div class="product" id="bip">
+            <h4><span class="icon">③</span> 用友 BIP 财务（业财一体）</h4>
+            <ul>
+              <li><strong>总账与合并报表：</strong>满足上市公司定期披露、母子合并、审计轨迹与电子档案要求。</li>
+              <li><strong>全面预算与费控：</strong>与 OA/CRM 活动申请对接，预算占用、报销三单匹配、讲者劳务合规入账。</li>
+              <li><strong>供应链与制造成本：</strong>采购入库、生产完工、批次成本与 WMS/MES/LIMS 对账；支持药材价格波动下的存货与毛利分析。</li>
+              <li><strong>应收应付与资金：</strong>销售合同回款计划、经销商往来、资金计划与 CRM 流向勾稽（可选）。</li>
+              <li><strong>税务与电子发票：</strong>进销项协同，降低手工台账与合规抽检风险。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Layer 2 -->
+      <article class="layer-block" id="layer-2">
+        <div class="layer-block-header">
+          <span class="layer-num" style="background: var(--layer2);">二</span>
+          <h3>业务运营与商业化层</h3>
+          <span class="badge">按需选型</span>
+        </div>
+        <div class="layer-block-body">
+          <div class="product">
+            <h4><span class="icon">④</span> CRM / 销售效能（医药代表专用型）</h4>
+            <ul>
+              <li><strong>讲者与会议管理：</strong>学术会议申请、讲者劳务、参会医生档案；费用与会议证据链一一对应。</li>
+              <li><strong>代表行为管理：</strong>拜访计划、定位打卡、结构化拜访记录（产品、关键信息），输出合规报告。</li>
+              <li><strong>流向与库存可视化：</strong>对接经销商流向，按区域/品种查看终端流向与库存，辅助排产。</li>
+            </ul>
+          </div>
+          <div class="product">
+            <h4><span class="icon">⑤</span> 供应链与仓储（WMS / SCM）</h4>
+            <ul>
+              <li><strong>温湿度监控集成：</strong>阴凉库、冷藏库超标自动报警并触发偏差流程。</li>
+              <li><strong>物料「电子身份证」：</strong>每批药材/饮片绑定库位与质量状态（待检/合格/不合格/限制使用），未经 QA 放行不可领料。</li>
+              <li><strong>效期与批次强管控：</strong>近效期预警；出库严格执行 FEFO/FIFO，防止过期品流入市场。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Layer 3 -->
+      <article class="layer-block" id="layer-3">
+        <div class="layer-block-header">
+          <span class="layer-num" style="background: var(--layer3);">三</span>
+          <h3>行业特色生产与质量层</h3>
+          <span class="badge">核心竞争力</span>
+        </div>
+        <div class="layer-block-body">
+          <div class="product">
+            <h4><span class="icon">⑥</span> MES / 生产执行（中药制造特色）</h4>
+            <ul>
+              <li><strong>提取车间程序化控制：</strong>将经验工艺拆解为加水量、温度曲线、保温时长等可编程参数，保障批次一致。</li>
+              <li><strong>电子批记录（EBR）：</strong>按工艺规程顺序操作，上一步未完成不可进入下一步；自动采集防篡改。</li>
+              <li><strong>物料平衡与收率：</strong>理论 vs 实际收率偏差超限自动触发偏差调查。</li>
+            </ul>
+          </div>
+          <div class="product">
+            <h4><span class="icon">⑦</span> LIMS / 实验室信息管理</h4>
+            <ul>
+              <li><strong>检验任务自动下发：</strong>到货/入库触发任务推送 QC，结果回写 WMS 更新物料状态。</li>
+              <li><strong>稳定性考察：</strong>自动取样计划、到点提醒、趋势图与异常预警。</li>
+              <li><strong>电子签名合规：</strong>关键结果第二人复核签名后生效，满足 GMP 电子记录要求。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Layer 4 -->
+      <article class="layer-block" id="layer-4">
+        <div class="layer-block-header">
+          <span class="layer-num" style="background: var(--layer4);">四</span>
+          <h3>数据与智能决策层</h3>
+          <span class="badge">披露与增效</span>
+        </div>
+        <div class="layer-block-body">
+          <div class="product">
+            <h4><span class="icon">⑧</span> 经营分析 / BI 平台</h4>
+            <ul>
+              <li><strong>质量成本看板：</strong>从 OA 偏差与 BIP 辅助核算归集返工、投诉召回成本，量化质量体系经济效果。</li>
+              <li><strong>集采品种盈利分析：</strong>按品种、规格、区域核算中标后实际毛利，辅助投标决策。</li>
+              <li><strong>合规风险仪表盘：</strong>飞检缺陷整改率、供应商审计不合格项、培训逾期等先行指标，向质量受权人/审计相关方预警。</li>
+            </ul>
+          </div>
+          <div class="product">
+            <h4><span class="icon">⑨</span> 企业 AI 知识库</h4>
+            <ul>
+              <li><strong>统一知识汇聚：</strong>对接 OA 受控文档、产品资料、SOP、注册文件与培训教材，版本与权限与质量体系一致。</li>
+              <li><strong>合规智能问答：</strong>为生产、质量、医药代表提供产品知识、竞品对比、合规话术检索，降低违规承诺与误用 SOP 风险。</li>
+              <li><strong>可追溯引用：</strong>回答附源文档与版本号，满足审计与飞检对「依据哪版文件」的追问。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="roadmap">
+      <h2>实施优先级与节奏</h2>
+      <p class="section-desc">分三年推进，避免多系统同时上线导致合规与运维失控。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>优先级</th>
+              <th>系统组合</th>
+              <th>主要理由</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="priority-y1">第一年</td>
+              <td>OA（GMP 流程版）+ HR（资质培训）+ BIP（总账/费控）+ WMS（含温湿度集成）</td>
+              <td>飞检合规 + 上市披露双刚需；缺任一项均可能构成重大缺陷</td>
+            </tr>
+            <tr>
+              <td class="priority-y2">第二年</td>
+              <td>LIMS + MES（提取 / 制剂核心车间）+ BIP 批次成本深化</td>
+              <td>质量数据闭环与工艺标准化；成本与批记录同源</td>
+            </tr>
+            <tr>
+              <td class="priority-y3">第三年</td>
+              <td>医药 CRM + BI + 企业 AI 知识库</td>
+              <td>销售合规精细化与数据变现；投入力度视处方药 / OTC / 流通模式而定</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="height:1.5rem" aria-hidden="true"></div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year y1">第一年</div>
+          <div class="timeline-content">
+            <h4>合规底座 + 仓储硬约束</h4>
+            <p>上线 GMP 流程 OA、HR 资质培训、BIP 总账/费控与 WMS 环控联动；形成飞检与财务披露可举证的最小完备集。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year y2">第二年</div>
+          <div class="timeline-content">
+            <h4>生产质量数字化</h4>
+            <p>LIMS 与 WMS/MES 打通检验与放行；核心车间 EBR 与工艺参数标准化。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year y3">第三年</div>
+          <div class="timeline-content">
+            <h4>商业化合规与经营可视</h4>
+            <p>处方药学术型 CRM 或 OTC 动销型方案分轨；BI 与合规仪表盘；建设企业 AI 知识库并推广至销售与质量场景。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes">
+      <h2>选型与投入要点</h2>
+      <div class="callout">
+        <h4>CRM 分轨提醒</h4>
+        <p>务必区分销售模式，避免上线后因合规逻辑不符而废弃：</p>
+        <ul>
+          <li><strong>OTC 动销型：</strong>通用 CRM + 经销商/流向管理模块往往可满足多数需求。</li>
+          <li><strong>处方药学术推广型：</strong>建议行业化配置或医药垂直方案（如 Veeva 或国内医药 SaaS），覆盖会议—讲者—证据链—费控全链路。</li>
+        </ul>
+      </div>
+      <div style="height:1rem" aria-hidden="true"></div>
+      <div class="highlight-box">
+        <strong>资源聚焦建议：</strong>在预算有限前提下，<strong>OA 合规流程</strong>、<strong>HR 资质培训</strong>与 <strong>BIP 总账/费控</strong>同步夯实；生产质量层（LIMS/MES）与仓储（WMS）构成追溯闭环，批次成本回写 BIP；CRM/BI/企业 AI 知识库与销售战略绑定，按第三年节奏审慎扩张。
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    传统医药上市公司 · 信息化产品架构（静态说明文档）
+  </footer>
+  <script src="assets/gate.js"></script>
+  <script src="assets/diagrams.js" defer></script>
+</body>
+</html>
